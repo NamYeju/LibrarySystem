@@ -10,14 +10,16 @@
 <BODY>
 <%
     String SIGNUP_OK = (String) request.getAttribute("SIGNUP_OK");
-    String SIGNIN_OK = (String) request.getAttribute("SIGNIN_OK");
+    //String SIGNIN_OK = (String) request.getAttribute("SIGNIN_OK");
 
     if(SIGNUP_OK.equals("success")){
-        out.println("<script>location.href='main'</script>");
+        out.println("<script>location.href='/'</script>");
     }
-    if(SIGNIN_OK.equals("success")){
-        out.println("<script>location.href='main'</script>");
-    }
+
+
+    //if(SIGNIN_OK.equals("success")){
+       // out.println("<script>location.href='/'</script>");
+    //}
 
 %>
 
