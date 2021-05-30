@@ -13,40 +13,44 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <title>Title</title>
 </head>
+<style>
+    .btn{background-color: #22508b;}
+    .btn:hover{
+        background-color: #22508b;
+    }
+    .btn:active{
+        background-color: #22508b;
+    }
+    .btn:visited{
+        background-color: #22508b;
+    }
+</style>
 <body>
 <div class="container">
-    <div class="py-5 text-center">
-        /*<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <div class="py-8 text-center">
+        <img class="d-block mx-auto mb-4" src="${pageContext.request.contextPath}/Image/libraryIcon.jpg" alt="" width="72" height="72">
         <h2>회원가입</h2>
-        <p class="lead">회원가입 이후 서비스 가능</p>
     </div>
-
     <div class="col-md-12 order-md-1">
         <h4 class="mb-3">회원정보</h4>
-        <form class="needs-validation" action="/check" method="POST">
-
-
+        <form class="needs-validation" action="/signUpcheck" method="POST">
             <div class="mb-3">
                 <label for="email">이메일</label>
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
-                    </div>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com" required name="email">
+                    <input type="email" class="form-control" id="email" placeholder="email@example.com" required name="email">
                     <div class="invalid-feedback" style="width: 100%;">Your email is required.</div>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="password">비밀번호</label>
-                <input type="password" class="form-control" id="password" placeholder="" value="" required name="password">
+                <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="password">
                 <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
             </div>
 
-
             <div class="mb-3">
                 <label for="username">이름</label>
-                <input type="text" class="form-control" id="username" placeholder="" value="" required name="name">
+                <input type="text" class="form-control" id="username" placeholder="이름을 입력해주세요." value="" required name="name">
                 <div class="invalid-feedback">유효한 이름을 입력해야합니다.</div>
             </div>
 
@@ -56,12 +60,9 @@
                 <div class="invalid-feedback">올바른 핸드폰번호 입력하세요.</div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
-            <hr class="mb-4">
-            <footer th:replace="/fragments/semantic :: footer"></footer>
+            <button class="btn btn-primary" type="submit">가입하기</button>
         </form>
     </div>
-
 </div>
 </body>
 </html>

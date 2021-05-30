@@ -10,19 +10,14 @@
 <BODY>
 <%
     String SIGNUP_OK = (String) request.getAttribute("SIGNUP_OK");
-    //String SIGNIN_OK = (String) request.getAttribute("SIGNIN_OK");
-
     if(SIGNUP_OK.equals("success")){
+        out.println("<script>alert('회원가입 성공!'); </script>");
         out.println("<script>location.href='/'</script>");
     }
-
-
-    //if(SIGNIN_OK.equals("success")){
-       // out.println("<script>location.href='/'</script>");
-    //}
-
+    else if(SIGNUP_OK.equals("fail")){
+        out.println("<script>alert('이미 가입한 회원입니다!'); </script>");
+        out.println("<script>location.href='/'</script>");
+    }
 %>
-
-
 </BODY>
 </HTML>
