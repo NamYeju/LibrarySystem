@@ -5,17 +5,23 @@
   Time: 오후 7:26
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="com.example.librarysystem.domain.entity.Member" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<form class="needs-validation" novalidate th:action="@{/signUpcheck}" method="POST">
-    <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
-<form class="needs-validation" novalidate th:action="@{/signUpcheck}" method="POST">
-    <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-</form>
+
+<%
+    session=request.getSession();
+    session=request.getSession(true);
+    Member member = (Member)session.getAttribute("member");
+    if(member!=null){
+        out.println("session값: "+member.getEmail());
+        out.println("session값: "+member.getName());
+        out.println("session값: "+member.getPhone());
+    }
+%>
 </body>
 </html>
