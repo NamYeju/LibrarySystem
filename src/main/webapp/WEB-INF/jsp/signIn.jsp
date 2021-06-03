@@ -30,21 +30,21 @@
     </style>
 </head>
 <body class="text-center">
-    <form class="needs-validation" novalidate th:action="@{/signIncheck}" method="POST">
+    <form class="needs-validation" action="/signIncheck" method="POST">
         <div class="py-5 text-center">
             <h2>로그인</h2>
             <p class="lead">로그인 이후 서비스 가능</p>
         </div>
-        <div class="div row mb-3 ">
+        <div class="div row mb-3 " style= "display: flex; justify-content: center;">
             <label for="inputEmail" class="col-sm-1 col-form-label">Email</label>
             <div class="col-sm-5">
-                <input type="email" class="form-control" id="inputEmail" placeholder="email@example.com">
+                <input type="email" class="form-control" id="inputEmail" placeholder="email@example.com" required name="email">
             </div>
         </div>
-        <div class="row mb-3">
+        <div class="row mb-3" style= "display: flex; justify-content: center;">
             <label for="inputPW" class="col-sm-1 col-form-label">Password</label>
             <div class="col-sm-5">
-                <input type="email" class="form-control" id="inputPW" placeholder="">
+                <input type="password" class="form-control" id="inputPW" placeholder="" required name="password">
             </div>
         </div>
         <div class="checkbox mb-3">
@@ -53,8 +53,9 @@
             </label>
         </div>
         <button class="btn btn-primary" type="submit">Sign in</button>
-    </form>
 
+    </form>
+    <button class="btn btn-primary" type="submit" onclick="location.href='/'">돌아가기</button>
 
 
 
