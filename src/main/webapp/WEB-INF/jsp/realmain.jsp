@@ -9,10 +9,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<%--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">--%>
-<%--  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--%>
-<%--  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>--%>
-<%--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
+  <%--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">--%>
+  <%--  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--%>
+  <%--  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>--%>
+  <%--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
@@ -92,7 +92,7 @@
 <style type="text/css">
 
   .swiper-container {
-    height:500px;;
+    margin-top: 50px;
   }
   .swiper-slide {
     text-align:center;
@@ -105,48 +105,140 @@
     /* 이 예제에서 필요해서 설정했습니다. 상황에따라 다를 수 있습니다. */
   }
 
+  a:link{
+    text-decoration: none; color: black;
+  }
+  a:visited{
+    text-decoration: none; color: black;
+  }
+  a:active{
+    text-decoration: none; color: black;
+  }
+  a:hover{
+    text-decoration: none; color: black;
+  }
+  .nav-item:hover{
+    background-color: white;
+  }
+  .nav-item:active{
+    background-color: white;
+  }
+  .nav-item:visited{
+    background-color: white;
+  }
+
+
+
+
 </style>
 
-<!-- 클래스명은 변경하면 안 됨 -->
-<div class="swiper-container">
-  <form action="/" method="get">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item" role="button" name="item"> 국내소설</li>
-      <li class="breadcrumb-item" name="item" value="외국소설">외국소설</li>
-      <li class="breadcrumb-item">경제경영</li>
-      <li class="breadcrumb-item">인문과학</li>
-      <li class="breadcrumb-item">만화</li>
-    </ol>
-    <script>
-      $('ol.breadcrumb.breadcrumb-item').click(function (){
-        $(this).value("국내소설");
-      });
-    </script>
-  </nav>
-  </form>
-  <div style="text-align:center; margin-top:5px;">베스트셀러</div>
-  <div class="swiper-wrapper">
-    <c:forEach var="book" items="${books}" varStatus="status">
+<%--<div class="swiper-container">--%>
 
-      <div class="swiper-slide">
-        <div>
-        <img src=${book.BOOK_IMG} width="200", height="264" >
-        <br><p>${book.BOOK_NAME}</p>
-        </div>
+
+<%--  <nav aria-label="breadcrumb">--%>
+<%--    <ol class="breadcrumb">--%>
+
+<form name="ko" action="/" method="get">
+  <input type="hidden" name="item" value="국내소설">
+</form>
+
+<form name="en" action="/" method="get">
+  <input type="hidden" name="item" value="외국소설">
+</form>
+
+<form name="economy" action="/" method="get">
+  <input type="hidden" name="item" value="경제경영">
+</form>
+
+<form name="science" action="/" method="get">
+  <input type="hidden" name="item" value="인문과학">
+</form>
+
+<form name="comic" action="/" method="get">
+  <input type="hidden" name="item" value="만화">
+</form>
+
+<%--      <li class="breadcrumb-item" ><a href="#" onclick="javascript:document.ko.submit()">국내소설</a></li>--%>
+<%--      <li class="breadcrumb-item" ><a href="#" onclick="javascript:document.en.submit()">외국소설</a></li>--%>
+<%--      <li class="breadcrumb-item"><a href="#" onclick="javascript:document.economy.submit()">경제경영</a></li>--%>
+<%--      <li class="breadcrumb-item"><a href="#" onclick="javascript:document.science.submit()">인문과학</a></li>--%>
+<%--      <li class="breadcrumb-item"><a href="#" onclick="javascript:document.comic.submit()">만화</a></li>--%>
+<%--    </ol>--%>
+
+<%--  </nav>--%>
+
+<!---->
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link " href="#" onclick="javascript:document.ko.submit()">국내소설</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="javascript:document.en.submit()">외국소설</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="javascript:document.economy.submit()">경제경영</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="javascript:document.science.submit()">인문과학</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="javascript:document.comic.submit()">만화</a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">베스트셀러 Top5</h5>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <c:forEach var="book" items="${books}" varStatus="status">
+
+          <div class="swiper-slide">
+            <div>
+              <img src=${book.BOOK_IMG} width="200", height="264" >
+              <br><p>${book.BOOK_NAME}</p>
+            </div>
+          </div>
+
+        </c:forEach>
+
       </div>
 
-    </c:forEach>
+      <!-- 네비게이션 -->
+      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
 
+      <!-- 페이징 -->
+      <div class="swiper-pagination"></div>
+    </div>
   </div>
-
-  <!-- 네비게이션 -->
-  <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-  <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-
-  <!-- 페이징 -->
-  <div class="swiper-pagination"></div>
 </div>
+</div>
+<!---->
+<%--  <div style="text-align:center; margin-top:5px;">베스트셀러 Top 5</div>--%>
+<%--  <div class="swiper-wrapper">--%>
+<%--    <c:forEach var="book" items="${books}" varStatus="status">--%>
+
+<%--      <div class="swiper-slide">--%>
+<%--        <div>--%>
+<%--        <img src=${book.BOOK_IMG} width="200", height="264" >--%>
+<%--        <br><p>${book.BOOK_NAME}</p>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+
+<%--    </c:forEach>--%>
+
+<%--  </div>--%>
+
+<%--  <!-- 네비게이션 -->--%>
+<%--  <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->--%>
+<%--  <div class="swiper-button-prev"></div><!-- 이전 버튼 -->--%>
+
+<%--  <!-- 페이징 -->--%>
+<%--  <div class="swiper-pagination"></div>--%>
+<%--</div>--%>
 
 <script>
 
@@ -176,6 +268,5 @@
 
 </body>
 </html>
-
 
 
