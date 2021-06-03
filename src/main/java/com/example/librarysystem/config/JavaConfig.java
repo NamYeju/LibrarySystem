@@ -2,8 +2,7 @@ package com.example.librarysystem.config;
 
 import com.example.librarysystem.repository.BookDao;
 import com.example.librarysystem.repository.MemberDao;
-import com.example.librarysystem.service.signUpService;
-import com.example.librarysystem.service.bookListService;
+import com.example.librarysystem.service.*;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +32,18 @@ public class JavaConfig {
         return new signUpService();
     }
     @Bean
+    public signInService signInService(){
+        return new signInService();
+    }
+    @Bean
+    public userUpdateService userUpdateService(){
+        return new userUpdateService();
+    }
+    @Bean
+    public userDeleteService userDeleteService(){
+        return new userDeleteService();
+    }
+    @Bean
     public BookDao bookDao(){
         return new BookDao((dataSource()));
     }
@@ -40,4 +51,14 @@ public class JavaConfig {
     public bookListService bookListService(){
         return new bookListService();
     }
+    @Bean
+    public bookRentalService bookRentalService(){
+        return new bookRentalService();
+    }
+
+    @Bean
+    public bookReturnService bookReturnService() {
+        return  new bookReturnService();
+    }
 }
+
