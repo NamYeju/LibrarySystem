@@ -39,16 +39,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/list">검색</a>
+                <a class="nav-link" href="/bookList">검색</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">대출</a>
+                <a class="nav-link" href="/bookrental">대출</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">반납</a>
+                <a class="nav-link" href="/bookreturn">반납</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">예약</a>
+                <a class="nav-link" href="/bookreser">예약</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,8 +58,11 @@
                     <a class="dropdown-item" href="#">대여/반납 현황</a>
                     <a class="dropdown-item" href="#">예약 현황</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">회원 정보 수정</a>
-                    <a class="dropdown-item" href="#">회원 탈퇴</a>
+                    <a class="dropdown-item" href="/userUpdate">회원 정보 수정</a>
+                    <form name="userDelete" class="needs-validation" action="/userDelete" method="POST">
+                        <input type="hidden" type="submit"></input>
+                    </form>
+                    <a class="dropdown-item" href="#" onclick="javascript:document.userDelete.submit();">회원 탈퇴</a>
                 </div>
             </li>
         </ul>
@@ -77,6 +80,11 @@
                 <button type="submit" class="btn btn-primary float-right">Sign-up</button>
             </form>
             <% }else{ %>
+            <marquee  width="300" height="50"> <% if(memberInfo!=null) out.print(memberInfo.getName()+"님이 로그인 중입니다. "); %> </marquee>
+
+            <form class="needs-validation" action="/logout" method="GET">
+                <button class="btn btn-primary float-right" type="submit">로그아웃</button>
+            </form>
 <%--            <form class="needs-validation" action="/signout" method="GET">--%>
 <%--                <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">로그아웃</button>--%>
 <%--            </form>--%>
