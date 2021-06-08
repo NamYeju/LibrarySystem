@@ -80,7 +80,6 @@
                     <input type="checkbox" name="item" value="BOOK_NAME" onclick="oneCheckbox(this)">제목
                     <input type="checkbox" name="item" value="AUTHOR" onclick="oneCheckbox(this)">글쓴이
                     <input type="checkbox" name="item" value="PUBLISHER" onclick="oneCheckbox(this)">출판사
-                    <input type="checkbox" name="item" value="GENRE" onclick="oneCheckbox(this)">장르
                 </td>
             </form>
             <table class="table">
@@ -89,6 +88,24 @@
                 <tr>
                     <c:forEach var="book" items="${booklist2}"  varStatus="status">
                         <c:set var="boo2" value="${genre}" />
+                        <c:if test="${genre eq ''}">
+                            <figure class="figure">
+                                <img src=${book.BOOK_IMG} width="151.5", height="200" hspace="10">
+                                <figcaption class="figure-caption">
+                                    이름: ${book.BOOK_NAME} <br>
+                                    저자: ${book.AUTHOR}<br>
+                                    출판사: ${book.PUBLISHER}<br>
+                                    대여: <button>${book.BOOK_STATE}</button>
+                                </figcaption>
+
+                                <form action="/bookRentalCheck" method="post">
+                                    대출:<button name="bookname" value="${book.BOOK_NAME}"> 대출 </button>
+                                </form>
+                                <form action="/bookReservCheck" method="post">
+                                    예약:<button name="bookname" value="${book.BOOK_NAME}"> 예약 </button>
+                                </form>
+                            </figure>
+                        </c:if>
                         <c:if test="${book.GENRE eq boo2}">
                             <figure class="figure">
                                 <img src=${book.BOOK_IMG} width="151.5", height="200" hspace="10">
