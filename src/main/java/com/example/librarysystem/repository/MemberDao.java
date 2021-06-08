@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import javax.sql.DataSource;
 
 import com.example.librarysystem.domain.dto.SignUpDto;
+import com.example.librarysystem.domain.dto.UserUpdateDto;
 import com.example.librarysystem.domain.entity.Member;
 import org.springframework.jdbc.core.*;
 public class MemberDao {
@@ -28,12 +29,12 @@ public class MemberDao {
                 new RowMapper<Member>() {
                     @Override
                     public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        Member member = new Member(rs.getString("email"),
-                                rs.getString("password"),
-                                rs.getString("name"),
-                                rs.getString("phone"),
-                                rs.getTimestamp("regdate").toLocalDateTime());
-                        member.setId(rs.getLong("id"));
+                        Member member = new Member(rs.getString("EMAIL"),
+                                rs.getString("PASSWORD"),
+                                rs.getString("NAME"),
+                                rs.getString("PHONE"),
+                                rs.getTimestamp("REGDATE").toLocalDateTime());
+                        member.setId(rs.getLong("ID"));
                         return member;
                     }
                 }, email);
@@ -41,9 +42,18 @@ public class MemberDao {
     }
     public void insert(SignUpDto signUpDto){
         String sql = "insert into "
-                + "member(email, password, name, phone, regdate) "
+                + "MEMBER(EMAIL, PASSWORD, NAME, PHONE, REGDATE) "
                 + "values(?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, signUpDto.getEmail(), signUpDto.getPassword(), signUpDto.getName(), signUpDto.getPhone(), signUpDto.getRegisterDateTime() );
+    }
+    public void update (UserUpdateDto userUpdateDto){
+        jdbcTemplate.update("update  MEMBER set PASSWORD=? , NAME=?, PHONE=?, REGDATE=? where EMAIL=?",
+                userUpdateDto.getPassword(),userUpdateDto.getName(),userUpdateDto.getPhone(),userUpdateDto.getRegisterDateTime(),userUpdateDto.getEmail());
+    }
+
+    //member delete
+    public void delete (String email){
+        jdbcTemplate.update("delete from MEMBER where EMAIL=?", email);
     }
 }
 
