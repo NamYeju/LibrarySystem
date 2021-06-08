@@ -1,10 +1,7 @@
 package com.example.librarysystem.service;
 
-import com.example.librarysystem.domain.dto.BookDto;
-import com.example.librarysystem.domain.dto.PageModel;
 import com.example.librarysystem.domain.entity.Book;
 import com.example.librarysystem.repository.BookDao;
-import com.example.librarysystem.repository.ListObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -20,7 +17,7 @@ public class bookListService {
 
     // 검색 조건(제목, 저자, 출판사)에 따른 리스트
     public List<Book> bookList2(String book_info, String condition){
-        return bookDao.selectByEmail(book_info, condition);
+        return bookDao.selectByCondition(book_info, condition);
     }
 
     // 장르(장르 네비게이션)에 따른 리스트

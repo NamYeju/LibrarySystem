@@ -53,6 +53,11 @@
         <div class="panel-heading">
             <h2 class="panel-title"> 도서 </h2>
         </div>
+        <form action="/bookList" method="get">
+            <ul class="list-group">
+                <button class="list-group-item" name="item" value=""> 전체보기 </button>
+            </ul>
+        </form>
         <!-- 검색 조건에 따른 북리스트 -->
         <form action="/genreSearch" method="post">
         <ul class="list-group">
@@ -70,21 +75,19 @@
 <div class="col-md-9">
 <form  action="/conditionSearch" method="post" >
     <td>
-        <input type="text" name="검색창">
+        <input type="text" name="info">
         <input type="submit" value="검색">
     </td>
     <td>
         <input type="checkbox" name="item" value="BOOK_NAME">제목
         <input type="checkbox" name="item" value="AUTHOR">글쓴이
         <input type="checkbox" name="item" value="PUBLISHER">출판사
-        <input type="checkbox" name="item" value="GENRE">장르
     </td>
 </form>
 <table class="table">
     <tbody>
     <tr>
         <c:forEach var="book" items="${bookList}" varStatus="status">
-            <c:if test="${book.GENRE eq '국내소설'}">
                 <figure class="figure">
                     <img src=${book.BOOK_IMG} width="151.5", height="200" hspace="10">
                     <figcaption class="figure-caption">
@@ -99,9 +102,7 @@
                     <form action="/bookReservCheck" method="post">
                         예약:<button name="bookname" value="${book.BOOK_NAME}"> 예약 </button>
                     </form>
-
                 </figure>
-            </c:if>
         </c:forEach>
     </tr>
     </tbody>
