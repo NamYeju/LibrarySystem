@@ -6,6 +6,7 @@ import com.example.librarysystem.service.*;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.repository.NoRepositoryBean;
 
 @Configuration
 public class JavaConfig {
@@ -55,7 +56,8 @@ public class JavaConfig {
     public bookRentalService bookRentalService(){
         return new bookRentalService();
     }
-
+    @Bean
+    public bookReservService bookReservService(){return new bookReservService();}
     @Bean
     public bookReturnService bookReturnService() {
         return  new bookReturnService();
