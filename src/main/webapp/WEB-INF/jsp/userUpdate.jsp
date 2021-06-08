@@ -30,7 +30,7 @@
 %>
 <div class="container">
     <div class="py-8 text-center">
-        <img class="d-block mx-auto mb-4" src="${pageContext.request.contextPath}/image/libraryIcon.jpg" alt="" width="72" height="72">
+        <img class="d-block mx-auto mb-4" src="${pageContext.request.contextPath}/Image/libraryIcon.jpg" alt="" width="72" height="72">
         <h2>회원수정</h2>
     </div>
     <div class="col-md-12 order-md-1">
