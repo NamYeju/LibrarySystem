@@ -16,10 +16,11 @@ public class Book {
     private String BOOK_STATE;
     private String BOOK_IMG;
     private LocalDateTime registerDateTime;
-    private int USER_ID;
+    private String USER_ID;
     private int COUNT;
+    private String RENTAL;
 
-    public Book(String BOOK_NAME, String AUTHOR, String PUBLISHER, String GENRE, String BOOK_STATE, String BOOK_IMG, LocalDateTime registerDateTime,int USER_ID, int COUNT) {
+    public Book(String BOOK_NAME, String AUTHOR, String PUBLISHER, String GENRE, String BOOK_STATE, String BOOK_IMG, LocalDateTime registerDateTime,String USER_ID, int COUNT, String RENTAL) {
         this.BOOK_NAME = BOOK_NAME;
         this.AUTHOR = AUTHOR;
         this.PUBLISHER = PUBLISHER;
@@ -27,7 +28,8 @@ public class Book {
         this.BOOK_STATE = BOOK_STATE;
         this.BOOK_IMG = BOOK_IMG;
         this.registerDateTime = registerDateTime;
-        this.USER_ID=USER_ID;
-        this.COUNT=COUNT;
+        this.USER_ID = USER_ID;
+        this.COUNT = COUNT;
+        this.RENTAL = RENTAL;
     }
 }
