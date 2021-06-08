@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 남예주
-  Date: 2021-05-31
-  Time: 오전 2:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="com.example.librarysystem.domain.entity.Member" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -15,18 +8,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-<%--&lt;%&ndash;        mainhome header&ndash;%&gt;--%>
-<%--<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #808080; color:white;">--%>
-<%--    <div class="container">--%>
-<%--        <div class="flex-md-column">--%>
-<%--            <a style="color: white; font-size: xx-large; " class="navbar-brand" >도서관리시스템</a>--%>
-<%--            <p class="lead"></p>--%>
-<%--        </div>--%>
-<%--        <div class="flex-md-row-reverse" id="navbarSupportedContent">--%>
-<%--            <ul class="navbar-nav " style="align-items: end">--%>
-<%--            </ul>--%>
-<%--        </div>--%>
-<%--    </div>--%>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <a class="navbar-brand" href="#">
         <img src="${pageContext.request.contextPath}/Image/libraryIcon.jpg" width="50" height="50" alt="">
@@ -42,13 +24,13 @@
                 <a class="nav-link" href="/bookList">검색</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/bookrental">대출</a>
+                <a class="nav-link" href="/bookRental">대출</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/bookreturn">반납</a>
+                <a class="nav-link" href="/bookReturn">반납</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/bookreser">예약</a>
+                <a class="nav-link" href="/bookReserve">예약</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,7 +38,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">대여/반납 현황</a>
-                    <a class="dropdown-item" href="#">예약 현황</a>
+                    <a class="dropdown-item" href="/myBook">예약 현황</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/userUpdate">회원 정보 수정</a>
                     <form name="userDelete" class="needs-validation" action="/userDelete" method="POST">
@@ -85,18 +67,6 @@
             <form class="needs-validation" action="/logout" method="GET">
                 <button class="btn btn-primary float-right" type="submit">로그아웃</button>
             </form>
-<%--            <form class="needs-validation" action="/signout" method="GET">--%>
-<%--                <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">로그아웃</button>--%>
-<%--            </form>--%>
-
-
-<%--            <form class="needs-validation" action="/userUpdate" method="GET">--%>
-<%--                <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">회원수정</button>--%>
-<%--            </form>--%>
-
-<%--            <form class="needs-validation" action="/userDelete" method="POST">--%>
-<%--                <button class="w-100 btn btn-lg btn-primary btn-block" type="submit">회원탈퇴</button>--%>
-<%--            </form>--%>
 
             <% } %>
         </div>
