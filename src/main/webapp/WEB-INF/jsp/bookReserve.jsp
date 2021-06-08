@@ -81,7 +81,6 @@
                     <input type="checkbox" name="item" value="book_name" onclick="oneCheckbox(this)">제목
                     <input type="checkbox" name="item" value="author" onclick="oneCheckbox(this)">글쓴이
                     <input type="checkbox" name="item" value="publisher" onclick="oneCheckbox(this)">출판사
-                    <input type="checkbox" name="item" value="genre" onclick="oneCheckbox(this)">장르
                 </td>
             </form>
 
