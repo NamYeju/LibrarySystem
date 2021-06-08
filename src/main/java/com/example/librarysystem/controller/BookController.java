@@ -27,7 +27,7 @@ public class BookController {
     @Autowired
     private bookReturnService bookReturnService;
 
-    private String theGenre;
+    private String theGenre="";
 
     //도서검색
     @GetMapping("/bookList")
@@ -46,11 +46,16 @@ public class BookController {
         String book_info = request.getParameter("info");
         String condition =request.getParameter("item");
         String genre=request.getParameter("genre");
+
         if(genre==null){
-            theGenre = "국내소설";
+            theGenre = "";
         }
+        System.out.println(book_info);
+        System.out.println(condition);
+        System.out.println("thecener="+theGenre);
 
         List<Book> bookList=bookListService.bookList2(book_info, condition);
+        System.out.println(bookList.get(0).getAUTHOR());
 
         model.addAttribute("genre",theGenre);
         model.addAttribute("booklist2",bookList);

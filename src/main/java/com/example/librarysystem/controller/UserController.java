@@ -2,6 +2,7 @@ package com.example.librarysystem.controller;
 
 import com.example.librarysystem.domain.dto.SignInDto;
 import com.example.librarysystem.domain.dto.SignUpDto;
+import com.example.librarysystem.domain.dto.UserUpdateDto;
 import com.example.librarysystem.domain.entity.Book;
 import com.example.librarysystem.domain.entity.Member;
 import com.example.librarysystem.service.*;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -115,38 +117,39 @@ public class UserController {
         member_session = null;
         return "logout";
     }
-//    //회원 수정 페이지
-//
-//    @GetMapping("/userUpdate")
-//    public String userUpdatepage(){
-//        return "userUpdate";
-//    }
-//
-//
-//    @PostMapping("/userUpdatecheck")
-//    public String userUpdate(UserUpdateDto userUpdateDto, Model model){
-//        LocalDateTime time= LocalDateTime.now();
-//        userUpdateDto.setEmail(session.getEmail());
-//        userUpdateDto.setRegisterDateTime(time);
-//        userUpdateService.userupdate(userUpdateDto);
-//
-//        Member member=userUpdateService.sessionchange(userUpdateDto);
-//
-//        member_session = member;
-//        model.addAttribute("UPDATE_OK", "success");
-//        return "userUpdatecheck";
-//    }
-//
-//
-//    @PostMapping("/userDelete")
-//    public String userDelete(HttpServletRequest request,Model model){
-//
-//        userDeleteService.delete(session.getEmail());
-//
-//        model.addAttribute("DELETE_OK","success");
-//        member_session = null;
-//
-//
-//        return "userDelete";
-//    }
+    //회원 수정 페이지
+
+    @GetMapping("/userUpdate")
+    public String userUpdatepage(){
+
+        return "userUpdate";
+    }
+
+
+    @PostMapping("/userUpdateCheck")
+    public String userUpdate(UserUpdateDto userUpdateDto, Model model){
+        LocalDateTime time= LocalDateTime.now();
+        userUpdateDto.setEmail(member_session.getEmail());
+        userUpdateDto.setRegisterDateTime(time);
+        userUpdateService.userupdate(userUpdateDto);
+
+        Member member=userUpdateService.sessionchange(userUpdateDto);
+
+        member_session = member;
+        model.addAttribute("UPDATE_OK", "success");
+        return "userUpdateCheck";
+    }
+
+
+    @PostMapping("/userDelete")
+    public String userDelete(HttpServletRequest request,Model model){
+
+        userDeleteService.delete(member_session.getEmail());
+
+        model.addAttribute("DELETE_OK","success");
+        member_session = null;
+
+
+        return "userDelete";
+    }
 }
